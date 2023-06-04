@@ -22,22 +22,22 @@ def swap_face_in_frame(source_face, target_face, frame):
     return frame
 
 
-def process_faces(source_face, frame, progress, all_faces=False):
+def process_faces(source_face, frame, progress=None, all_faces=False):
     if all_faces:
         many_faces = get_face_many(frame)
         if many_faces:
             for face in many_faces:
                 frame = swap_face_in_frame(source_face, face, frame)
-            progress.set_postfix(status='.', refresh=True)
-        else:
-            progress.set_postfix(status='S', refresh=True)
+        #     progress.set_postfix(status='.', refresh=True)
+        # else:
+        #     progress.set_postfix(status='S', refresh=True)
     else:
         face = get_face_single(frame)
         if face:
             frame = swap_face_in_frame(source_face, face, frame)
-            progress.set_postfix(status='.', refresh=True)
-        else:
-            progress.set_postfix(status='S', refresh=True)
+        #     progress.set_postfix(status='.', refresh=True)
+        # else:
+        #     progress.set_postfix(status='S', refresh=True)
     return frame
 
 
